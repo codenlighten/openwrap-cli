@@ -2,10 +2,14 @@
 """
 Example: Interactive chatbot using LumenAI streaming
 """
+import sys
+from pathlib import Path
+
+# Add parent directory to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from lumen_sdk import LumenClient
 import json
-from pathlib import Path
-import sys
 
 
 def load_token():

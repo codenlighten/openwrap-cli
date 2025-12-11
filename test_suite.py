@@ -3,8 +3,13 @@
 Test suite for LumenAI CLI and SDK
 """
 import sys
+import io
 import json
 from pathlib import Path
+
+# Fix Windows console encoding
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 from lumen_sdk import LumenClient
 
 

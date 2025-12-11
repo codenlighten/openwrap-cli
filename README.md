@@ -2,15 +2,43 @@
 
 Command-line interface and Python SDK for the LumenAI API Gateway.
 
+## 🚀 What Makes This Special
+
+This isn't just a CLI wrapper - it's a **complete cognitive architecture** for AI agents:
+
+- **🧠 Recursive Research** - Agents automatically explore `missingContext` to build comprehensive knowledge trees
+- **📊 Schema-Driven Extraction** - Generate and apply JSON schemas for structured data extraction
+- **🤖 Multi-Agent Collaboration** - Orchestrate specialized agents with different perspectives
+- **🔄 Iterative Refinement** - Self-aware agents that know what they don't know and fill gaps
+- **🔗 Pipeline Orchestration** - Chain multiple agents and schemas for complex workflows
+
 ## Features
 
 - ✅ JWT authentication with secure credential storage
 - ✅ Query AI models (GPT-5 series, GPT-4o-mini)
 - ✅ Real-time streaming responses
-- ✅ Structured JSON output
+- ✅ JSON schema generation from natural language
+- ✅ Structured data extraction with validation
+- ✅ Recursive research agent (exploits `missingContext`)
+- ✅ Multi-agent synthesis patterns
 - ✅ Cryptographic signatures (ECDSA, Post-Quantum)
 - ✅ Usage tracking and cost monitoring
 - ✅ Python SDK for programmatic access
+
+## Quick Start
+
+### Try the Ultimate Demo
+
+```bash
+# See the full cognitive architecture in action
+python ultimate_demo.py
+```
+
+This demo showcases:
+- Recursive deep research (auto-explores branches)
+- AI-generated schemas for data extraction
+- Multi-agent collaboration (3 specialized agents)
+- Iterative refinement using missingContext
 
 ## Installation
 
@@ -51,6 +79,44 @@ python lumen_cli.py logout
 #### Register New Account
 ```bash
 python lumen_cli.py register
+```
+
+### 🧠 Cognitive Architecture Examples
+
+#### 1. Recursive Research Agent
+```bash
+# Automatically explores missingContext branches
+python recursive_researcher.py deep
+```
+
+The agent will:
+- Query the API with your research question
+- Detect `missingContext` items in the response
+- Recursively explore each missing context (up to max depth)
+- Build a complete knowledge tree
+
+#### 2. Multi-Agent Orchestration
+```bash
+# Different specialized agents collaborate
+python agent_patterns.py synthesis
+```
+
+Patterns available:
+- `graph` - Build knowledge graphs with entities/relationships
+- `compare` - Comparative analysis of two topics
+- `refine` - Iterative refinement using missingContext
+- `synthesis` - Multi-agent collaboration
+
+#### 3. Schema-Driven Pipelines
+```bash
+# Generate a schema from natural language
+python lumen_cli.py generate-schema "A person with name, email, and age" --save person.json
+
+# Extract structured data using the schema
+python lumen_cli.py validate "John Doe, john@example.com, 30 years old" -f person.json
+
+# List all saved schemas
+python lumen_cli.py list-schemas
 ```
 
 ### Querying

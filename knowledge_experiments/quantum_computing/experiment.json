@@ -1,0 +1,38 @@
+{
+  "domain": "quantum_computing",
+  "started": "2025-12-12T06:58:11.984859",
+  "queries": [
+    {
+      "timestamp": "2025-12-12T06:57:33.426971",
+      "query": "What are the principles of quantum superposition?",
+      "response_length": 1825,
+      "missing_context": [],
+      "gap_count": 0
+    },
+    {
+      "timestamp": "2025-12-12T06:58:10.984491",
+      "query": "How do quantum gates perform computation?",
+      "response_length": 1862,
+      "missing_context": [],
+      "gap_count": 0
+    }
+  ],
+  "gaps": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-12-12T06:58:11.984859",
+      "label": "after_seeding",
+      "queries_count": 2,
+      "gaps_identified": 0,
+      "gaps_filled": 0,
+      "total_response_chars": 3687
+    }
+  ],
+  "stats": {
+    "domain": "quantum_computing",
+    "queries_asked": 2,
+    "gaps_identified": 0,
+    "gaps_filled": 0,
+    "snapshots": 1
+  }
+}

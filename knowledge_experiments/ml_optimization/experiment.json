@@ -1,0 +1,38 @@
+{
+  "domain": "ml_optimization",
+  "started": "2025-12-12T06:59:28.619415",
+  "queries": [
+    {
+      "timestamp": "2025-12-12T06:59:05.388087",
+      "query": "What are alternatives to backpropagation?",
+      "response_length": 1335,
+      "missing_context": [],
+      "gap_count": 0
+    },
+    {
+      "timestamp": "2025-12-12T06:59:27.618743",
+      "query": "How do evolutionary algorithms optimize neural networks?",
+      "response_length": 2000,
+      "missing_context": [],
+      "gap_count": 0
+    }
+  ],
+  "gaps": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-12-12T06:59:28.619415",
+      "label": "after_seeding",
+      "queries_count": 2,
+      "gaps_identified": 0,
+      "gaps_filled": 0,
+      "total_response_chars": 3335
+    }
+  ],
+  "stats": {
+    "domain": "ml_optimization",
+    "queries_asked": 2,
+    "gaps_identified": 0,
+    "gaps_filled": 0,
+    "snapshots": 1
+  }
+}

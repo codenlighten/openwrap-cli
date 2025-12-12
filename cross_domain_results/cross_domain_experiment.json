@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-12-12T06:59:28.665227",
+  "domains": [
+    "quantum_computing",
+    "neuroscience",
+    "ml_optimization"
+  ],
+  "cross_domain_links": [],
+  "summary": {
+    "domains_explored": 3,
+    "links_discovered": 0,
+    "total_shared_concepts": 0
+  }
+}

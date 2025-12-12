@@ -1,0 +1,45 @@
+{
+  "domain": "Python async patterns",
+  "started": "2025-12-12T06:10:16.666494",
+  "queries": [
+    {
+      "timestamp": "2025-12-12T06:09:42.077423",
+      "query": "What are Python async patterns?",
+      "response_length": 2253,
+      "missing_context": [],
+      "gap_count": 0
+    },
+    {
+      "timestamp": "2025-12-12T06:09:53.127359",
+      "query": "How does asyncio work?",
+      "response_length": 1152,
+      "missing_context": [],
+      "gap_count": 0
+    },
+    {
+      "timestamp": "2025-12-12T06:10:15.665188",
+      "query": "What are common asyncio pitfalls?",
+      "response_length": 2413,
+      "missing_context": [],
+      "gap_count": 0
+    }
+  ],
+  "gaps": [],
+  "snapshots": [
+    {
+      "timestamp": "2025-12-12T06:10:16.666494",
+      "label": "after_seeding",
+      "queries_count": 3,
+      "gaps_identified": 0,
+      "gaps_filled": 0,
+      "total_response_chars": 5818
+    }
+  ],
+  "stats": {
+    "domain": "Python async patterns",
+    "queries_asked": 3,
+    "gaps_identified": 0,
+    "gaps_filled": 0,
+    "snapshots": 1
+  }
+}

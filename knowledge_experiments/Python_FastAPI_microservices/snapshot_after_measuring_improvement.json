@@ -1,0 +1,64 @@
+{
+  "label": "after_measuring_improvement",
+  "timestamp": "2025-12-12T06:44:53.473309",
+  "domain": "Python FastAPI microservices",
+  "queries_processed": 3,
+  "gaps_identified": 9,
+  "gaps_filled": 5,
+  "improvements": [
+    {
+      "query": "How do I implement authentication in FastAPI microservices?",
+      "original": {
+        "length": 3486,
+        "gaps": 5
+      },
+      "after_filling": {
+        "length": 2142,
+        "gaps": 0,
+        "response": "Here's a practical approach to implementing authentication in FastAPI microservices. A common pattern is to have a central authorization service or gateway that issues short lived JWTs after validating user credentials via OAuth 2.0 or OpenID Connect. Microservices then validate the JWTs for access. For internal calls you can use client credentials to obtain service tokens.\n\nKey recommendations:\n- Choose a token strategy: JWT based access tokens for users and optionally refresh tokens; for internal calls use OAuth 2.0 client credentials.\n- Protect endpoints with FastAPI dependencies that verify JWTs by checking signature, expiry, issuer and audience and load the current user.\n- Hash passwords securely with bcrypt via a library like Passlib.\n- Decide on signing keys: HS256 with a shared secret or RS256 with a public private key pair; RS256 scales better across services; consider JWKS for rotation.\n- Centralize token issuance: implement an /token endpoint or a dedicated auth service that issues tokens after credential validation.\n- For user flows keep access tokens short lived, 15 to 30 minutes, and use refresh tokens to reauthenticate when needed.\n- For microservice calls obtain tokens via client credentials and pass them in the Authorization header as Bearer tokens; validate tokens in the receiving service checking audience and issuer.\n- Operational considerations: rotate keys, token revocation strategies, logging and auditing, secure secret storage.\n\nA minimal implementation outline:\n- Define models for user, token, and token data.\n- Implement password hashing and verification.\n- Implement a function to create a signed access token with claims such as subject, issuer, audience, expiry and scopes.\n- Implement a dependency that decodes and verifies the token and loads the user.\n- Expose an auth endpoint to issue tokens and a protected endpoint that requires authentication.\n\nIf you share details about your stack and constraints such as the need for RS256 or HS256, whether you want a gateway, and whether you also need user login flow or only service to service authentication, I can tailor a concrete example."
+      },
+      "metrics": {
+        "length_increase": -1344,
+        "length_increase_pct": -38.6,
+        "gap_reduction": 5,
+        "gap_reduction_pct": 100.0
+      }
+    },
+    {
+      "query": "What's the best way to handle database connections in FastAPI?",
+      "original": {
+        "length": 2252,
+        "gaps": 0
+      },
+      "after_filling": {
+        "length": 1355,
+        "gaps": 0,
+        "response": "Best practice: use an async SQLAlchemy setup with a per-request session injection and transactional scope. Key steps:\n\n1) Create a single async engine at startup: engine = create_async_engine(DATABASE_URL, pool_size=10, max_overflow=20)\n2) Create a session factory: AsyncSessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)\n3) Expose a FastAPI dependency that yields a per-request session:\n\n   async def get_session() -> AsyncGenerator[AsyncSession, None]:\n       async with AsyncSessionLocal() as session:\n           yield session\n\n4) Use the dependency in your endpoints and wrap DB work in a transaction: \n\n   @app.get(\"/items/\")\n   async def read_items(db: AsyncSession = Depends(get_session)):\n       async with db.begin():\n           result = await db.execute(select(Item))\n           items = result.scalars().all()\n           return items\n\n5) Benefits: connections are pooled, reused, and not held longer than a request; commits and rollbacks are automatic within the transaction block. Tune pool_size and max_overflow to your workload.\n6) Maintenance: use Alembic for migrations; monitor pool usage and retry transient errors if needed. If you need multiple databases, create separate engines and corresponding dependencies. Optional alternatives: Tortoise ORM or the databases library for simpler async workflows."
+      },
+      "metrics": {
+        "length_increase": -897,
+        "length_increase_pct": -39.8,
+        "gap_reduction": 0,
+        "gap_reduction_pct": 0
+      }
+    },
+    {
+      "query": "How should microservices communicate in a FastAPI architecture?",
+      "original": {
+        "length": 1585,
+        "gaps": 5
+      },
+      "after_filling": {
+        "length": 2003,
+        "gaps": 0,
+        "response": "FastAPI-based microservices should use a mixed communication model: synchronous, request/response calls between services for low-latency operations, and asynchronous messaging for decoupled workflows and events. For synchronous service-to-service calls, prefer HTTP/HTTPS with JSON (REST) for simplicity and interoperability; if you need higher performance and strongly typed contracts between internal services, consider gRPC with Protobuf. For decoupling and eventual consistency, use a message broker such as Kafka, RabbitMQ, or NATS and implement publish/subscribe or event-driven patterns. Architectural components include an API Gateway to handle external traffic, auth, rate limiting, and TLS termination, and a service mesh (Istio or Linkerd) to provide mTLS, traffic control, and observability between internal services. Define and version contracts (OpenAPI for REST, Protobuf for gRPC) and aim for backward compatibility; a central contract registry can help in large ecosystems. Security should cover service-to-service authentication (mTLS or token-based) and user authentication/authorization (OAuth2/JWT) for external calls. Observability is essential: propagate correlation IDs, use OpenTelemetry, collect metrics with Prometheus, and trace requests with Jaeger or Tempo. Reliability patterns include timeouts, retries with exponential backoff, idempotent endpoints, and circuit breakers; for distributed transactions prefer sagas (or choreography) over two-phase commits. Data consistency is typically eventual for asynchronous flows; design idempotent handlers and clearly own data. Practical FastAPI tips: build services with async endpoints, use httpx for internal HTTP calls or grpcio for gRPC, and use aiokafka or similar clients for Kafka. Run in Kubernetes with a service mesh and API gateway, and structure services around bounded contexts with stable APIs. If you want, I can tailor recommendations to your stack (cloud, brokers, Kubernetes setup, and whether you\u2019ll use gRPC)."
+      },
+      "metrics": {
+        "length_increase": 418,
+        "length_increase_pct": 26.4,
+        "gap_reduction": 5,
+        "gap_reduction_pct": 100.0
+      }
+    }
+  ]
+}

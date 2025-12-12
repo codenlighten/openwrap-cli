@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-12-12T06:59:28.652221",
+  "label": "after_gap_filling",
+  "queries_count": 2,
+  "gaps_total": 0,
+  "gaps_filled": 0,
+  "metrics": {
+    "gaps_filled": 0,
+    "emergent_insights": 0,
+    "cross_domain_links": 0
+  }
+}
